@@ -1,2 +1,2 @@
 # DA-projects
-Data Analytics Project 
+Data Analytics Projects
