@@ -12,4 +12,6 @@ By definition, Zipfr's Law  states that given a large sample of words used, the 
   - ![pic_1](https://github.com/chloequinto/DA-projects/blob/master/Zipf_SorcerStone/vgc_book1.png?raw=true)
     - Above, displays the growth for the total text of J.K. Rowling, Harry Potter and the Sorcerer's Stone. In the first few chapters of the book, the number of types and hapaxes (words that occurs only once within a text) grows at a fast rate. This continues on throughout the book, leading to the conclusion that the vocabulary growth still increases.
 - Type Frequency List
+  - ![pic_2](https://github.com/chloequinto/DA-projects/blob/master/Zipf_SorcerStone/tfl_book1.png?raw=true)
 - Frequency Spectra
+  - ![pic_3](https://github.com/chloequinto/DA-projects/blob/master/Zipf_SorcerStone/spc_book1.png?raw=true)
