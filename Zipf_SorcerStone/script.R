@@ -1,23 +1,6 @@
 library(zipfR)
 
-?zipfR
-
-adv <- readLines("brown_adverbs.txt", encoding="UTF-8")
-head(adv, 30)
-length(adv)
-View(adv)
-adv.tfl <- vec2tfl(adv)
-N(adv.tfl)
-V(adv.tfl)
-adv.spc <- tfl2spc(adv.tfl)
-adv.spc
-adv.vgc <- vec2vgc (adv, m.max =2)
-
-plot(adv.tfl) #logarithmic scale recommended 
-plot(adv.spc) #barplot of frequency spectrum 
-plot(adv.vgc,add.m = 1:2) #vocabulary growth plot 
-#################################################3
-
+#First Part is to clean up the text 
 book1 <- readLines("Sorcerer's Stone.txt", encoding="UTF-8")
 #lowercase all words
 book1 <- tolower(book1)
@@ -42,30 +25,17 @@ book1$value <- rownames(book1)
 book1 <- melt(book1)
 book1$L1 <- NULL
 
-write.table(book1, "book1.txt", row.names = FALSE)
-
+write.table(book1, "book1.txt", row.names = FALSE, qoute = FALSE)
+View(book1)
 book1 <- readLines("book1.txt")
-book1.tfl <- vec2tfl(book1)
-#####################################################
-install.packages("pdftools")
-library(pdftools)
-download.file("https://www.apple.com/support/products/pdf/applecare_ipod_t_and_c_11182003.pdf", "tac_apple_2.pdf")
-text <- pdf_text("tac_apple_2.pdf")
 
-Tokenize <- function(string){ 
-  #lowercase all words
-  temp <- tolower(text)
-  #remove everything else
-  temp <- stringr::str_replace_all(text, "[^a-zA-Z\\s]", " ")
-  #one white space
-  temp <- stringr::str_replace_all(text, "[\\s]+", " ")
-  #split
-  temp <- stringr::str_split(temp, " ")[[1]]
-  indexes <- which (text == "")
-  if (length(indexes) > 0 ){ 
-    text <- text[-indexes]
-    }
-  return(temp)
-}
+book1.tfl <- vec2tfl(book1) #vector to type frequency list 
+N(book1.tfl) #sample size 
+V(book1.tfl) #type count
+book1.spc <- tfl2spc(book1.tfl) #computes observed freq spectrum 
+book1.spc
+book1.vgc <- vec2vgc (book1, m.max =2) #vocabulary growth curve 
 
-View(text)
+plot(book1.tfl) #logarithmic scale recommended 
+plot(book1.spc) #barplot of frequency spectrum 
+plot(book1.vgc,add.m = 1:2) #vocabulary growth plot 
